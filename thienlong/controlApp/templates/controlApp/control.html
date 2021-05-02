@@ -1,0 +1,176 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+<!-- control -->
+    <div class="modalControl display-none" id="myControl">
+        <div class="modal-header">
+            <div class="modal-item">
+                <input type="checkbox" id="close-tab" onclick="close_tab()">
+                <label for="close-tab">
+                    <i class="fas fa-times-circle" id="close"></i>
+                </label>
+            </div>
+            <header>Control Panel</header>
+        </div>
+        <div class="modal-area">
+            <div class="modal-row">
+                <div class="modal-column">
+                    <div class= "modal-column-1">
+                        <label for="sizepaper">Size Paper</label>
+                        <select name="sizepaper" id="sizepaper">
+                            <option value="8">Giấy A6</option>
+                            <option value="16">Giấy A5</option>
+                            <option value="21">Giấy A4</option>                            
+                        </select>
+                        <br>
+                        <label for="speed">Enter Speed</label>                        
+                        <input type="number" name="speed" id="speed" min="0" max="150" required>
+                        <br>
+                        <label for="error" >Error</label>
+                        <input type="number" id="error" name="error" required> 
+                        <br>
+                        <button onclick="submitData()" id="submitButton">Button</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+    </div>
+<!-- Home -->
+    <div class="modalHome display-none" id="myHome">
+        <div class="modal-header">
+            <div class="modal-item">
+                <input type="checkbox" id="close-tab" onclick="close_tab()">
+                <label for="close-tab">
+                    <i class="fas fa-times-circle" id="close"></i>
+                </label>
+            </div>
+            <header>HOME</header>
+        </div>
+        <div class="modal-area">
+            <div class="modal-row">
+                <div class="modal-column">
+                    <form action="">
+                        <label for="sizepaper2">Size Paper</label>
+                        <select name="sizepaper2" id="sizepaper2">
+                            <option value="8">Giấy A6</option>
+                            <option value="16">Giấy A5</option>
+                            <option value="21">Giấy A4</option>                            
+                        </select>
+                        <br>
+                        <label for="speed2" id="speed2">Enter Speed</label>
+                        <input type="number" name="speed2" min="0" max="150" required>
+                        <br>
+                        <label for="error" id="error2">Error</label>
+                        <input type="number" name="error2" required>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            
+        </div>
+    </div>
+<!-- Report -->
+    <div class="modalReport display-none" id="myReport">
+        <div class="modal-header">
+            <div class="modal-item">
+                <input type="checkbox" id="close-tab" onclick="close_tab()">
+                <label for="close-tab">
+                    <i class="fas fa-times-circle" id="close"></i>
+                </label>
+            </div>
+            <header>REPORT</header>
+        </div>
+        <div class="modal-area">
+            <div class="modal-row">
+                <div class="modal-comlumn-filter">
+                    <div class="modal-column-filter-selector">  
+                        
+                    </div>
+                    <div class="modal-column-sendmail">
+                        <button onclick="sendMail()" id="sendmail_button">Send report to Email</button>
+                        <input type="email" id="email">
+                        <input type="date" id="Date">
+                        <button onclick="filterResult()" id="filter_button">Filter</button>
+                    </div>
+                </div>
+                <div class="modal-column-table">
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>AVERAGE WIDTH</th>
+                            <th>DOTTED_LENGTH</th>
+                            <th>DISTANCE</th>
+                            <th>STATUS</th>
+                            <th>TIME</th>
+                        </tr>
+                        {% for pen in pen_good %}
+                            <tr>
+                                <td>
+                                    {{pen.id}}
+                                </td>
+                                <td>
+                                    {{pen.avg_pen}}
+                                </td> 
+                                <td>
+                                    {{pen.dotted_lenght}}
+                                </td>
+                                <td>
+                                    {{pen.distance}}
+                                </td>
+                                <td>
+                                    {{pen.state}}
+                                </td>
+                                <td>
+                                    {{pen.time}}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                
+            </div>
+        </div>
+        <div class="modal-footer">
+            
+        </div>
+    </div>
+<!-- Help -->
+    <div class="modalHelp display-none" id="myHelp">
+        <div class="modal-header">
+            <div class="modal-item">
+                <input type="checkbox" id="close-tab" onclick="close_tab()">
+                <label for="close-tab">
+                    <i class="fas fa-times-circle" id="close"></i>
+                </label>
+            </div>
+            <header>HELP</header>
+        </div>
+        <div class="modal-area">
+            <div class="modal-row">
+                <div class="modal-column">
+                    <form action="">
+                        <label for="sizepaper">Size Paper</label>
+                        <select name="sizepaper" id="sizepaper">
+                            <option value="8">Giấy A6</option>
+                            <option value="16">Giấy A5</option>
+                            <option value="21">Giấy A4</option>                            
+                        </select>
+                        <br>
+                        <label for="speed4" id="speed4">Enter Speed</label>
+                        <input type="number" name="speed4" min="0" max="150" required>
+                        <br>
+                        <label for="error4" id="error">Error</label>
+                        <input type="number" name="error4" required>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            
+        </div>
+    </div>
+{% endblock %}

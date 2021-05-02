@@ -1,0 +1,11 @@
+[
+    {
+        "model": "controlApp.control",
+        "pk": 1,
+        "fields": {
+            "size": "21",
+            "speed": "0",
+            "state": "0"
+        }
+    }
+]

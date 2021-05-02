@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Thien Long</title>
+        <script src="{% static 'js/control.js' %}"></script>
+        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">      
+    </head>
+    <style>
+        section {
+            background: url({% static 'images/tree-in-sunset-main.jpg' %}) no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 100vh;
+            transition: all 0.5s ease;
+        }
+    </style>
+    <body>
+        <input type= "checkbox" id="check">
+        <label for="check">
+            <i class="fas fa-align-justify" id="btn"></i>
+            <i class="fas fa-backspace" id="cancel"></i>
+        </label>
+        <div class="sidebar">
+            <header>My App</header>
+            <ul>
+                <li class="modal-btn"><a href="#" id="Btn-home"     onclick="show_home()"><i class="fas fa-home"> Home</i></a></li>
+                <li class="modal-btn"><a href="#"  id="Btn-control" onclick="show_control()"><i class="fas fa-gamepad"> Control</i></a></li>
+                <li class="modal-btn"><a href="#" id="Btn-report"   onclick="show_report()"><i class="fas fa-sticky-note"> Report</i></a></li>
+                <li class="modal-btn"><a href="#" id="Btn-help"     onclick="show_help()"><i class="fab fa-angellist"> Help</i></a></li>
+            </ul>
+        </div>
+        <section>
+            {% block content %}
+
+            {% endblock %}
+        </section>
+    </body>
+</html>
