@@ -24,6 +24,7 @@ def control(request):
     pen_good = pen_show.objects.filter(time = filterDay).order_by()
     context ={
         'pen_good':pen_good,
+        'date': filterDay,
         }
     return render(request,'controlApp/control.html',context)
 # class control(LoginRequiredMixin, TemplateView):
@@ -38,12 +39,14 @@ def submitData(request):
         print(sizepaper)
         speed = request_body['speed']
         error = request_body['error']
+        status = request_body['state']
         tests = test.objects.get(id=1)
 
         # print(request_body)
         tests.speed = speed
         tests.error = error
         tests.sizepaper=sizepaper
+        tests.state = status
         tests.save()
         return HttpResponse(status=200)
     except Exception:
@@ -64,9 +67,7 @@ def sendmail(request):
                 context,
                 )
         plain_message = strip_tags(message)
-        
         send_mail('Hello', plain_message,EMAIL_HOST_USER, [email_to_send], html_message=message)
-
         return HttpResponse(status = 200)
     
     except Exception:
@@ -82,4 +83,25 @@ def filterDay(request):
         return HttpResponse(status = 200)
     except Exception():
         return HttpResponse(status = 400)
-    
+
+def stop(request):
+    # HttpResponse(status=200)
+    try:
+        request_body = json.loads(request.body.decode('utf8'))
+        print(request_body)
+        sizepaper = request_body['sizepaper']
+        print(sizepaper)
+        speed = request_body['speed']
+        error = request_body['error']
+        status = request_body['state']
+        tests = test.objects.get(id=1)
+
+        # print(request_body)
+        tests.speed = speed
+        tests.error = error
+        tests.sizepaper=sizepaper
+        tests.state = status
+        tests.save()
+        return HttpResponse(status=200)
+    except Exception:
+        return HttpResponse(status=400)

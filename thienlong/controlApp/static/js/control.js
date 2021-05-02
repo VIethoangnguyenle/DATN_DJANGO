@@ -134,7 +134,8 @@ function submitData(){
                 // "new_status_id": new_status_id
                 "speed" :speed,
                 "error": error,
-                "sizepaper":sizepaper
+                "sizepaper":sizepaper,
+                "state": "1"
             }),
             "mode": "cors",
             "credentials": "include"
@@ -146,7 +147,37 @@ function submitData(){
         console.log('Thing was not saved to the database.');
     }
 }
-
+function stop(){
+    if (confirm('Are you sure you want to stop ?')) {
+        var sizepaper = document.getElementById("sizepaper").value;
+        fetch("/api/stop/", {
+            "method": "POST",
+            "headers": {
+                "accept": "*/*",
+                "accept-language": "en-US,en;q=0.9,vi;q=0.8",
+                "sec-fetch-dest": "empty",
+                "sec-fetch-site": "same-origin",
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            "referrer": "",
+            "referrerPolicy": "same-origin",
+            body: JSON.stringify({
+                // "new_status_id": new_status_id
+                "speed" :0,
+                "error": 0,
+                "sizepaper": sizepaper,
+                "state": "0"
+            }),
+            "mode": "cors",
+            "credentials": "include"
+        })
+        console.log('Thing was saved to the database.');
+        alert("STOPP NOW !!");
+    } else {
+        alert("Not save");
+        console.log('Thing was not saved to the database.');
+    }
+}
 function sendMail() {
     if (confirm('Are you sure you want to send report to this Email?')) {
         var email = document.getElementById("email").value;

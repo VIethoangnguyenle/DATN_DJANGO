@@ -12,3 +12,4 @@ class ResultAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(control,contorAdmin)
 admin.site.register(pen_show,ResultAdmin)
+admin.site.register(test,TestAdmin)

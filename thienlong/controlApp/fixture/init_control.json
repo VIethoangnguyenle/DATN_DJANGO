@@ -1,6 +1,6 @@
 [
     {
-        "model": "controlApp.control",
+        "model": "controlApp.test",
         "pk": 1,
         "fields": {
             "size": "21",
