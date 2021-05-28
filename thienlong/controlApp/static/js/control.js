@@ -115,10 +115,14 @@ function submitData(){
     if (confirm('Are you sure you want to save this thing into the database?')) {
         var sizepaper = document.getElementById("sizepaper").value;
         var error = document.getElementById("error").value;
-        var speed = document.getElementById("speed").value;
-        console.log("size",sizepaper);
-        console.log("errord",error);
-        console.log("speed",speed);
+        var levelSpeed = document.getElementById("levelSpeed").value;
+        var distance = document.getElementById("distance").value;
+        var option = document.getElementById("option").value;
+        console.log("size", sizepaper);
+        console.log("error", error);
+        console.log("levelSpeed", levelSpeed);
+        console.log("distance", distance)
+        console.log("option", option)
         fetch("/api/control/", {
             "method": "POST",
             "headers": {
@@ -132,9 +136,11 @@ function submitData(){
             "referrerPolicy": "same-origin",
             body: JSON.stringify({
                 // "new_status_id": new_status_id
-                "speed" :speed,
+                "levelSpeed" :levelSpeed,
                 "error": error,
                 "sizepaper":sizepaper,
+                "distance":distance,
+                "option":option,
                 "state": "1"
             }),
             "mode": "cors",
@@ -163,9 +169,11 @@ function stop(){
             "referrerPolicy": "same-origin",
             body: JSON.stringify({
                 // "new_status_id": new_status_id
-                "speed" :0,
+                "levelSpeed" :0,
                 "error": 0,
                 "sizepaper": sizepaper,
+                "option": 1,
+                "distance": 0,
                 "state": "0"
             }),
             "mode": "cors",

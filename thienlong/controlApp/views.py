@@ -37,13 +37,17 @@ def submitData(request):
         print(request_body)
         sizepaper = request_body['sizepaper']
         print(sizepaper)
-        speed = request_body['speed']
+        levelSpeed = request_body['levelSpeed']
         error = request_body['error']
+        distance = request_body['distance']
+        option = request_body['option']
         status = request_body['state']
         tests = test.objects.get(id=1)
 
         # print(request_body)
-        tests.speed = speed
+        tests.distance = distance
+        tests.option = option
+        tests.levelSpeed = levelSpeed
         tests.error = error
         tests.sizepaper=sizepaper
         tests.state = status
@@ -91,15 +95,19 @@ def stop(request):
         print(request_body)
         sizepaper = request_body['sizepaper']
         print(sizepaper)
-        speed = request_body['speed']
+        levelSpeed = request_body['levelSpeed']
         error = request_body['error']
         status = request_body['state']
+        option = request_body['option']
+        distance = request_body['distance']
         tests = test.objects.get(id=1)
 
         # print(request_body)
-        tests.speed = speed
+        tests.levelSpeed = levelSpeed
         tests.error = error
         tests.sizepaper=sizepaper
+        tests.distance = distance
+        tests.option = option
         tests.state = status
         tests.save()
         return HttpResponse(status=200)

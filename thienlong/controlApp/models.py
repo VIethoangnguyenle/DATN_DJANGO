@@ -62,17 +62,36 @@ class pen_show(models.Model):
 class test(models.Model):
     START = '1'
     STOP = '0'
+
+    BEGIN = '1'
+    LOOP = '2'
+
+    LOW_SPEED = '1'
+    NOR_SPEED = '2'
+    FAST_SPEED = '3'
     STATE = [
         (START,'Start'),
         (STOP,'Stop'),
     ]
-    sizepaper = models.CharField(max_length=20,blank=False);
-    speed = models.CharField(max_length=20,blank=False)
+    OPTIONAL = [
+        (BEGIN, 'Begin'),
+        (LOOP, 'Loop')
+    ]
+
+    LEVEL_SPEED= [
+        (LOW_SPEED, 'Low speed'),
+        (NOR_SPEED, 'Normal speed'),
+        (FAST_SPEED, 'Fast speed')
+    ]
+    sizepaper = models.CharField(max_length=20,blank=False)
+    levelSpeed = models.CharField(max_length=2, choices=LEVEL_SPEED, default=LOW_SPEED)
     error = models.CharField(max_length=20,blank=False)
+    distance = models.CharField(max_length=20)
+    option = models.CharField(max_length=2, choices=OPTIONAL, default=BEGIN)
     state = models.CharField(max_length=2, choices=STATE,default=STOP)
 
     def __str__(self):
-        return "Size: {},speed: {},error:{}".format(self.sizepaper,self.speed,self.error)
+        return "Size: {},levelSpeed: {}, error:{}, distance: {}".format(self.sizepaper, self.levelSpeed, self.error, self.distance)
 
 class dut_net_length(models.Model):
     length = models.DecimalField(max_digits=7,decimal_places=2)

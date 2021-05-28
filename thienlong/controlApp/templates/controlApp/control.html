@@ -23,12 +23,24 @@
                             <option value="21">Giấy A4</option>                            
                         </select>
                         <br>
-                        <label for="speed">Enter Speed</label>                        
-                        <input type="number" name="speed" id="speed" min="0" max="150" required>
+                        <label for="levelSpeed">Level speed</label>
+                        <select name="levelSpeed" id="levelSpeed">
+                            <option value="1">LOW SPEED</option>
+                            <option value="2">NORMAL SPEED</option>
+                            <option value="3">FAST SPEED</option>
+                        </select>
                         <br>
-                        <label for="error" >Error</label>
-                        <input type="number" id="error" name="error" required> 
+                        <label for="error">Error</label>
+                        <input type="number" id="error" name="error" value="50" required> 
                         <br>
+                        <label for="distance">Distance</label>
+                        <input type="number" id="distance" name="distance" value="50" required> 
+                        <br>
+                        <label for="option">Option</label>
+                        <select name="option" id="option">
+                            <option value="1">BEGIN TEST</option>
+                            <option value="2">LOOP TEST</option>
+                        </select>
                         <button onclick="submitData()" id="submitButton">Start</button>
                         <button onclick="stop()" id="stop">Stop</button>
                     </div>
