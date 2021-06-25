@@ -1,10 +1,14 @@
-
+*{
+    padding: 0;
+    margin: 0;
+}
 body{
     background-color: #042331;
 }
 li{
     list-style: none;
 }
+
 .sidebar {
     position: fixed;
     left: 0;
@@ -96,7 +100,7 @@ label #close {
     pointer-events: none;
 }
 #check:checked ~ label #cancel{
-    left : 195px;
+    left : 190px;
 }
 /* Khi duoc nhan point toi the section de thuc hien lenh margin */
 #check:checked ~section{
@@ -106,10 +110,11 @@ label #close {
 .modalControl {
     position: relative;
     z-index: 1;
-    max-width: 800px;
-    height: 400px;
+    width: 600px;
+    height: auto;
     top: 80px;
-    margin-left: 10px;
+    padding: 15px;
+    margin-left: 50px;
     background-color: rgb(10, 45, 56);
     border-style: solid;
     border-radius: 20px;
@@ -132,7 +137,7 @@ label #close {
 .modalHome {
     position: relative;
     z-index: 1;
-    max-width: 800px;
+    width: 800px;
     height: 400px;
     top: 80px;
     margin-left: 10px;
@@ -148,7 +153,7 @@ label #close {
 .modalHelp {
     position: relative;
     z-index: 1;
-    max-width: 800px;
+    width: 800px;
     height: 400px;
     top: 80px;
     margin-left: 10px;
@@ -165,10 +170,10 @@ label #close {
 .modalReport {
     position: relative;
     z-index: 1;
-    max-width: 800px;
-    height: 600px;
-    top: 80px;
-    margin-left: 10px;
+    width: 700px;
+    height: 400px;
+    margin-top: 80px;
+    margin-left: 30px;
     background-color: rgb(10, 45, 56);
     border-style: solid;
     border-radius: 20px;
@@ -183,16 +188,18 @@ label #close {
 }
 
 .display-block {
-    display: block;
+    display: inline-block;
 }
 
 .modal-header {
     background-color: lightseagreen;
+    line-height: 70px;
     width: 100%;
     height: 70px;
     align-items: center;
     border-radius: 20px;
     align-content: center;
+    border: 3px solid black;
 }
 
 .modal-header header{
@@ -202,17 +209,17 @@ label #close {
 }
 .modal-item {
     position: absolute ;
-    right: 10px;
-    top: 10px;
+    right: 14px;
+    top: 25px;
 }
 .modal-area {
     background-color: burlywood;
-    margin: auto;
-    border: 1px solid #888;
-    width: 95%;
-    height: 80%;
-    margin-top: 5px;
+    padding: 15px;
     border-radius: 20px;
+    height: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
 }
 .close {
     color: burlywood;
@@ -226,6 +233,8 @@ label #close {
     cursor: pointer;
 }
 input[type=number]{
+    position: relative;
+    margin-left: 50px;
     margin-top: 10px;
     color: black;
     font-size: 15px;
@@ -234,23 +243,31 @@ input[type=number]{
     text-decoration: none;
     border-style: groove;
 }
-input[type = email]{
-    margin-top: 10px;
+
+.modal-column-sendmail #email{
     color: black;
     font-size: 15px;
     background-color: thistle;
-    padding: 5px 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 30px;
+    line-height: 30px;
     text-decoration: none;
     border-style: groove;
+    border: 2px solid brown;
+    width: 230px;
 }
+
 input[type = date]{
-    margin-top: 10px;
     color: black;
     font-size: 15px;
     background-color: thistle;
     padding: 5px 5px;
+    margin-top: 3px;
+    text-align: center;
     text-decoration: none;
     border-style: groove;
+    width: 230px;
 }
 form label {
     margin-top: 10px;
@@ -263,7 +280,10 @@ form label {
     font-size: 20px;
     padding: 5px 10px;
 }
-.modal-column-1 select{
+.modal-area #sizepaper{
+    position: relative;
+    width: 162px;
+    margin-left: 34px;
     margin-top: 10px;
     color: black;
     font-size: 15px;
@@ -273,18 +293,74 @@ form label {
     border-style: groove; 
 }
 
-.modal-column-1 button{
+.modal-area #levelSpeed{
+    position: relative;
+    margin-left: 21px;
     margin-top: 10px;
-    color:black;
-    background-color: darkkhaki;
+    color: black;
     font-size: 15px;
     background-color: thistle;
     padding: 5px 10px;
     text-decoration: none;
     border-style: groove; 
-    border-radius: 15px;
+}
+.modal-area #error{
+    position: relative;
+    margin-left: 87px;
+    width: 137px;
+    text-align: center;
+    margin-top: 10px;
+    color: black;
+    font-size: 15px;
+    background-color: thistle;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-style: groove; 
 }
 
+.modal-area #distance{
+    position: relative;
+    margin-left: 52px;
+    width: 138px;
+    text-align: center;
+    margin-top: 10px;
+    color: black;
+    font-size: 15px;
+    background-color: thistle;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-style: groove; 
+}
+.modal-area #submitButton{
+    position: relative;
+    float: left;
+    margin-top: -97px;
+    margin-left: 342px;
+    width: 97px;
+    height: 47px;
+    font-size: 25px;
+    line-height: 47px;
+    color:black;
+    background-color: yellowgreen;
+    text-decoration: none;
+    border-style: groove; 
+    border-radius: 10px;
+}
+.modal-area #stop{
+    position: relative;
+    float: left;
+    margin-top: -97px;
+    margin-left: 453px;
+    width: 97px;
+    height: 47px;
+    font-size: 25px;
+    line-height: 47px;
+    color:black;
+    background-color: yellowgreen;
+    text-decoration: none;
+    border-style: groove; 
+    border-radius: 10px;
+}
 .modal-row {
     position: relative;
     width: 100%;
@@ -304,27 +380,62 @@ table, th, td,tr{
     border: 1px solid black;
     border-collapse: collapse;
     text-align: center;
-    font-size: 15px;
+    font-size: 18px;
     padding: 4px;
 }
 
 .modal-column-table{
-    position: inherit;
+    position: relative;
     width: 85%;
     height: 90%;
-    padding-left: 100px;
+    padding-left: 52px;
     padding-top: 20px;
     overflow: auto;
 }
 .modal-column-sendmail {
-    background-color: antiquewhite;
-    padding: 5px;
+    margin-left: 165px;
+    display: inline-block;
+    align-items: center;
 }
 
-.modal-column-sendmail button {
-    font-size: 15px;
-    border: 1px solid black;
-    border-radius: 5px;
-    width: fit-content;
+
+.modalReport .modal-item{
+    position: absolute;
+    right: 17px;
+    top: 12px;
+}
+
+.modal-column-sendmail #filter_button{
+    position: relative;
+    width: 90px;
     height: 30px;
+    line-height: 30px;
+}
+
+.modal-column-sendmail #sendmail_button{
+    position: relative;
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.modalReport .modal-area{
+    position: relative;
+    background-color: burlywood;
+    border: 1px solid #888;
+    width: 95%;
+    height: 73%;
+    border-radius: 20px;
+}
+
+.modal-column-table #table{
+    display: inline-block;
+}
+
+.modal-column-table #table tr{
+    padding: 3px;
+}
+
+.modal-column-table #table th{
+    padding: 3px;
 }

@@ -13,39 +13,33 @@
             <header>Control Panel</header>
         </div>
         <div class="modal-area">
-            <div class="modal-row">
-                <div class="modal-column">
-                    <div class= "modal-column-1">
-                        <label for="sizepaper">Size Paper</label>
-                        <select name="sizepaper" id="sizepaper">
-                            <option value="8">Giấy A6</option>
-                            <option value="16">Giấy A5</option>
-                            <option value="21">Giấy A4</option>                            
-                        </select>
-                        <br>
-                        <label for="levelSpeed">Level speed</label>
-                        <select name="levelSpeed" id="levelSpeed">
-                            <option value="1">LOW SPEED</option>
-                            <option value="2">NORMAL SPEED</option>
-                            <option value="3">FAST SPEED</option>
-                        </select>
-                        <br>
-                        <label for="error">Error</label>
-                        <input type="number" id="error" name="error" value="50" required> 
-                        <br>
-                        <label for="distance">Distance</label>
-                        <input type="number" id="distance" name="distance" value="50" required> 
-                        <br>
-                        <label for="option">Option</label>
-                        <select name="option" id="option">
-                            <option value="1">BEGIN TEST</option>
-                            <option value="2">LOOP TEST</option>
-                        </select>
-                        <button onclick="submitData()" id="submitButton">Start</button>
-                        <button onclick="stop()" id="stop">Stop</button>
-                    </div>
-                </div>
-            </div>
+            <label for="sizepaper">Size Paper</label>
+            <select name="sizepaper" id="sizepaper">
+                <option value="8">Giấy A6</option>
+                <option value="16">Giấy A5</option>
+                <option value="21">Giấy A4</option>                            
+            </select>
+            <br>
+            <label for="levelSpeed">Level speed</label>
+            <select name="levelSpeed" id="levelSpeed">
+                <option value="1">LOW SPEED</option>
+                <option value="2">NORMAL SPEED</option>
+                <option value="3">FAST SPEED</option>
+            </select>
+            <br>
+            <label for="error">Error</label>
+            <input type="number" id="error" name="error" value="50" required> 
+            <br>
+            <label for="distance">Distance</label>
+            <input type="number" id="distance" name="distance" value="50" required> 
+            <br>
+            <label for="option" style="display: none;">Option</label>
+            <select name="option" id="option" style="display: none;">
+                <option value="1">BEGIN TEST</option>
+                <option value="2">LOOP TEST</option>
+            </select>
+            <button onclick="submitData()" id="submitButton">Start</button>
+            <button onclick="stop()" id="stop">Stop</button>
         </div>
         <div class="modal-footer">
 
@@ -63,24 +57,20 @@
             <header>HOME</header>
         </div>
         <div class="modal-area">
-            <div class="modal-row">
-                <div class="modal-column">
-                    <form action="">
-                        <label for="sizepaper2">Size Paper</label>
-                        <select name="sizepaper2" id="sizepaper2">
-                            <option value="8">Giấy A6</option>
-                            <option value="16">Giấy A5</option>
-                            <option value="21">Giấy A4</option>                            
-                        </select>
-                        <br>
-                        <label for="speed2" id="speed2">Enter Speed</label>
-                        <input type="number" name="speed2" min="0" max="150" required>
-                        <br>
-                        <label for="error" id="error2">Error</label>
-                        <input type="number" name="error2" required>
-                    </form>
-                </div>
-            </div>
+            <form action="">
+                <label for="sizepaper2">Size Paper</label>
+                <select name="sizepaper2" id="sizepaper2">
+                    <option value="8">Giấy A6</option>
+                    <option value="16">Giấy A5</option>
+                    <option value="21">Giấy A4</option>                            
+                </select>
+                <br>
+                <label for="speed2" id="speed2">Enter Speed</label>
+                <input type="number" name="speed2" min="0" max="150" required>
+                <br>
+                <label for="error" id="error2">Error</label>
+                <input type="number" name="error2" required>
+            </form>
         </div>
         <div class="modal-footer">
             
@@ -98,62 +88,48 @@
             <header>REPORT</header>
         </div>
         <div class="modal-area">
-            <div class="modal-row">
-                <div class="modal-comlumn-filter">
-                    <div class="modal-column-filter-selector">  
-                        
-                    </div>
-                    <div class="modal-column-sendmail">
-                        <button onclick="sendMail()" id="sendmail_button">Send report to Email</button>
-                        <input type="email" id="email">
-                        <input type="date" id="Date" value="{{date}}">
-                        <button onclick="filterResult()" id="filter_button">Filter</button>
-                    </div>
-                </div>
-                <div class="modal-column-table">
-                    <table>
-                        <tr>
-                            <th>ID</th>
-                            <th>AVERAGE WIDTH</th>
-                            <th>DOTTED_LENGTH</th>
-                            <th>DISTANCE</th>
-                            <th>STATUS</th>
-                            <th>TIME</th>
-                        </tr>
-                        {% for pen in pen_good %}
-                            <tr>
-                                <td>
-                                    {{pen.id}}
-                                </td>
-                                <td>
-                                    {{pen.avg_pen}}
-                                </td> 
-                                <td>
-                                    {{pen.dotted_lenght}}
-                                </td>
-                                <td>
-                                    {{pen.distance}}
-                                </td>
-                                <td>
-                                    {%if pen.state == "0" %}
-                                        {{"Bút không đạt chuẩn"}}
-                                    {%endif%}
-                                    {%if pen.state == "1" %}
-                                        {{"Bút đạt chuẩn"}}
-                                    {%endif%}
-                                </td>
-                                <td>
-                                    {{pen.time}}
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </table>
-                </div>
-                
+            <div class="modal-column-sendmail">
+                <button onclick="sendMail()" id="sendmail_button">Send Email</button>
+                <input type="email" id="email">
+                <br>
+                <button onclick="filterResult()" id="filter_button">Filter</button>
+                <input type="date" id="Date" value="{{date}}">
             </div>
-        </div>
-        <div class="modal-footer">
-            
+            <div class="modal-column-table">
+                <table id="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>AVERAGE WIDTH</th>
+                        <th>DISTANCE</th>
+                        <th>STATUS</th>
+                        <th>TIME</th>
+                    </tr>
+                    {% for pen in pen_good %}
+                        <tr>
+                            <td>
+                                {{pen.id}}
+                            </td>
+                            <td>
+                                {{pen.avg_pen}}
+                            </td> 
+                            <td>
+                                {{pen.distance}}
+                            </td>
+                            <td>
+                                {%if pen.state == "0" %}
+                                    {{"Bút không đạt chuẩn"}}
+                                {%endif%}
+                                {%if pen.state == "1" %}
+                                    {{"Bút đạt chuẩn"}}
+                                {%endif%}
+                            </td>
+                            <td>
+                                {{pen.time}}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>
 <!-- Help -->
@@ -176,7 +152,7 @@
                             <option value="8">Giấy A6</option>
                             <option value="16">Giấy A5</option>
                             <option value="21">Giấy A4</option>                            
-                        </select>
+                        </select>do
                         <br>
                         <label for="speed4" id="speed4">Enter Speed</label>
                         <input type="number" name="speed4" min="0" max="150" required>

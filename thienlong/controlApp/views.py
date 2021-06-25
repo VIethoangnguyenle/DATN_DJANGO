@@ -3,6 +3,7 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.http import HttpResponse
 import json
+from django.core.mail import EmailMessage
 from django.core.mail import send_mail
 from .models import test,pen_show, filterByDay
 from thienlong.settings import EMAIL_HOST_USER
@@ -62,6 +63,8 @@ def sendmail(request):
         request_body = json.loads(request.body.decode('utf8'))
         email_to_send = request_body['email']
         date = request_body['date']
+        print(email_to_send)
+        print(date)
         pen_good = pen_show.objects.filter(time=date).order_by()
         context = {
             'pen_good': pen_good,
@@ -70,11 +73,18 @@ def sendmail(request):
                 'controlApp/message.html',
                 context,
                 )
+        
         plain_message = strip_tags(message)
-        send_mail('Hello', plain_message,EMAIL_HOST_USER, [email_to_send], html_message=message)
+        # print(plain_message)
+        email = EmailMessage('Subject', 'Body', to=[email_to_send])
+        email.send()
+        # send_mail('Hello', plain_message,EMAIL_HOST_USER, [email_to_send], html_message=message)
+        # res = send_mail("hello paul", "comment tu vas?", EMAIL_HOST_USER, [email_to_send])
+        # print(res)
         return HttpResponse(status = 200)
     
     except Exception:
+        print(Exception.args)
         return HttpResponse(status = 400)
 
 def filterDay(request):

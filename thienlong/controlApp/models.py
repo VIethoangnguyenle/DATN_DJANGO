@@ -39,7 +39,6 @@ class pen_show(models.Model):
         (KHONG_DAT,'Bút Không đạt chuẩn'),
     ]
     avg_pen = models.DecimalField(max_digits=7,decimal_places=2)
-    dotted_lenght = models.DecimalField(max_digits=5,decimal_places=2)
     distance = models.DecimalField(max_digits=10,decimal_places=2)
     state = models.CharField(max_length=10,choices=STATE)
     time = models.DateField(default=timezone.now)
@@ -57,7 +56,7 @@ class pen_show(models.Model):
         return pen_show.objects.filter(time=timezone.now)
     
     def __str__(self):
-        return "{} {} {} {} {}".format(self.avg_pen,self.dotted_lenght,self.distance,self.state,self.time)
+        return "{} {} {} {}".format(self.avg_pen,self.distance,self.state,self.time)
 
 class test(models.Model):
     START = '1'

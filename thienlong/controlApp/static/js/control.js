@@ -117,12 +117,12 @@ function submitData(){
         var error = document.getElementById("error").value;
         var levelSpeed = document.getElementById("levelSpeed").value;
         var distance = document.getElementById("distance").value;
-        var option = document.getElementById("option").value;
+        // var option = document.getElementById("option").value;
         console.log("size", sizepaper);
         console.log("error", error);
         console.log("levelSpeed", levelSpeed);
         console.log("distance", distance)
-        console.log("option", option)
+        // console.log("option", option)
         fetch("/api/control/", {
             "method": "POST",
             "headers": {
@@ -140,7 +140,7 @@ function submitData(){
                 "error": error,
                 "sizepaper":sizepaper,
                 "distance":distance,
-                "option":option,
+                "option":"1",
                 "state": "1"
             }),
             "mode": "cors",
